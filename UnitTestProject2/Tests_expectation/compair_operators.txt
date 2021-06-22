@@ -1,0 +1,6 @@
+1	1	Operator	<	<
+2	1	Operator	>	>
+3	1	Operator	==	==
+4	1	Operator	<=	<=
+5	1	Operator	>=	>=
+6	1	Operator	!=	!=

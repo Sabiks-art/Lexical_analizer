@@ -1,0 +1,10 @@
+1	1	key_word	char	KWName
+1	6	identifier	ch1	IDName
+1	10	Operator	=	=
+1	12	char_literal	'a'	a
+1	15	delimiter	;	;
+2	1	key_word	char	KWName
+2	6	identifier	ch1	IDName
+2	10	Operator	=	=
+2	12	char_literal	'\a'	U+0007
+2	16	delimiter	;	;

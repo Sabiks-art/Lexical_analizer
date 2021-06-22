@@ -1,0 +1,9 @@
+1	1	delimiter	(	(
+2	1	delimiter	)	)
+3	1	delimiter	[	[
+4	1	delimiter	]	]
+5	1	delimiter	{	{
+6	1	delimiter	}	}
+7	1	delimiter	.	.
+8	1	delimiter	,	,
+9	1	delimiter	;	;

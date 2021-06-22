@@ -1,0 +1,2 @@
+string str1 = "string\n";
+string str2 = @"string\n";

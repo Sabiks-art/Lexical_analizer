@@ -1,0 +1,1 @@
+1	1	real_literal_double	1234e5	123400000

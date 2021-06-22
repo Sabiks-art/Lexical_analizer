@@ -1,0 +1,1 @@
+1	1	char_literal	'\u263a'	☺

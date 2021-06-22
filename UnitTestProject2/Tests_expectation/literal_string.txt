@@ -1,0 +1,1 @@
+1	1	string_literal	@"a\nbc\u263ad"	a\nbc\u263ad

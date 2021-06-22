@@ -1,0 +1,11 @@
+1	1	char_literal	'\"'	"
+2	1	char_literal	'\''	'
+3	1	char_literal	'\\'	\
+4	1	char_literal	'\0'	U+0000
+5	1	char_literal	'\a'	U+0007
+6	1	char_literal	'\b'	U+0008
+7	1	char_literal	'\f'	U+000C
+8	1	char_literal	'\n'	U+000A
+9	1	char_literal	'\r'	U+000D
+10	1	char_literal	'\t'		
+11	1	char_literal	'\v'	U+000B

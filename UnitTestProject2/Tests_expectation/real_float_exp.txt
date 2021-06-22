@@ -1,0 +1,1 @@
+1	1	real_literal_float	1234e-5f	0,01234

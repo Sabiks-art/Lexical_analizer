@@ -1,0 +1,1 @@
+1	1	real_literal_decimal	1.234e5m	123400

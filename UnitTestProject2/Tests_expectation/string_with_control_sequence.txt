@@ -1,0 +1,1 @@
+1	1	string_literal	"ab\ncd"	abU+000Acd

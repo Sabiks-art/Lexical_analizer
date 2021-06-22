@@ -1,0 +1,12 @@
+1	1	Operator	+	+
+2	1	Operator	-	-
+3	1	Operator	/	/
+4	1	Operator	*	*
+5	1	Operator	%	%
+6	1	Operator	++	++
+7	1	Operator	--	--
+8	1	Operator	+=	+=
+9	1	Operator	-=	-=
+10	1	Operator	/=	/=
+11	1	Operator	*=	*=
+12	1	Operator	%=	%=

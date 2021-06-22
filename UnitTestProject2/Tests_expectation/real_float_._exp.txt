@@ -1,0 +1,1 @@
+1	1	real_literal_float	1.234e5f	123400

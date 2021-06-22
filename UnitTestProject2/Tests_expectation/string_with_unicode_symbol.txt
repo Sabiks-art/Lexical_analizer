@@ -1,0 +1,1 @@
+1	1	string_literal	"ab\u263acd"	ab☺cd

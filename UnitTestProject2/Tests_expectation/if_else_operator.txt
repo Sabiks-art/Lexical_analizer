@@ -1,0 +1,15 @@
+1	1	key_word	if	KWName
+1	4	delimiter	(	(
+1	5	identifier	a	IDName
+1	7	Operator	==	==
+1	10	integer_literal_int	5	5
+1	11	delimiter	)	)
+1	13	identifier	a	IDName
+1	15	Operator	=	=
+1	17	integer_literal_int	0	0
+1	18	delimiter	;	;
+2	1	key_word	else	KWName
+2	6	identifier	a	IDName
+2	8	Operator	=	=
+2	10	integer_literal_int	1	1
+2	11	delimiter	;	;

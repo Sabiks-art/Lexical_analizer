@@ -1,0 +1,4 @@
+void AddBuf(char symb)
+        {
+            buf += symb;
+        }

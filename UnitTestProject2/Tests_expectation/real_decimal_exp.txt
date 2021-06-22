@@ -1,0 +1,1 @@
+1	1	real_literal_decimal	123e5m	12300000

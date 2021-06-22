@@ -1,0 +1,10 @@
+1	1	key_word	string	KWName
+1	8	identifier	str1	IDName
+1	13	Operator	=	=
+1	15	string_literal	"string\n"	stringU+000A
+1	25	delimiter	;	;
+2	1	key_word	string	KWName
+2	8	identifier	str2	IDName
+2	13	Operator	=	=
+2	15	string_literal	@"string\n"	string\n
+2	26	delimiter	;	;

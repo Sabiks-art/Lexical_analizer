@@ -1,0 +1,1 @@
+1	1	real_literal_double	1.234d	1,234
