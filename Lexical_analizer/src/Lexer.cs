@@ -64,7 +64,7 @@ namespace Lexical_analizer.src
             lexes.Add(new Token(string_num, column_num, type, source, val));
         }
 
-        private bool IsDelimiter(char symb)  
+        public bool IsDelimiter(char symb)  
         {
             if (Array.IndexOf(delimiter,symb) != (-1)) return true;
             else return false;
@@ -82,12 +82,6 @@ namespace Lexical_analizer.src
             else return false;
         }
 
-        private bool IsHexadecimal(char symb)
-        {
-            if (Char.IsDigit(symb) || (symb >= 'a' && symb <= 'f') || (symb >= 'A' && symb <= 'F')) return true;
-            else return false;
-        }
- 
         private bool IsInsignChar(char symb)
         {
             if (symb == ' ' || symb == '\n' || symb == '\t' || symb == '\r' || symb == '\v') return true;

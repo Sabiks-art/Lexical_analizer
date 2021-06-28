@@ -5,7 +5,7 @@ namespace Lexical_analizer.src
     {
         public readonly int string_num;
         public readonly int column_num;
-        public readonly string type;
+        public readonly dynamic type;
         public readonly string source;
         public readonly dynamic value;
 

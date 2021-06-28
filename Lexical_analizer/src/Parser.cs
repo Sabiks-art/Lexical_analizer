@@ -8,6 +8,13 @@ namespace Lexical_analizer.src
         private readonly List<Token> Lexemes;
         private Token CurrentToken;
         private Token Er;
+
+        private enum Type_lex
+        {
+            identifier,             integer_literal_int,        integer_literal_uint,    integer_literal_long,   integer_literal_ulong,
+            real_literal_float,     real_literal_decimal,       real_literal_double,
+        };
+
         private readonly string Tree;
         public Parser(List<Token> Lexemes)
         {
@@ -26,8 +33,27 @@ namespace Lexical_analizer.src
             return Tree;
         }
 
+        private bool IsOperation(string str)
+        {
+            if ((str == "+") || (str == "-") || (str == "*") || (str == "/")) return true;
+            else return false;
+        }
+
+        private void OutputER(Token token)
+        {
+            Er = new Token(token.string_num, token.column_num, "Syntax error", "Expected Identificator or Number", "");
+        }
+
         private BinOpNode ParseExpression()
         {
+            Token token = CurrentToken;
+
+            if (Lexemes.Count == 1)
+            {
+                Er = new Token(token.string_num, token.column_num + token.source.Length, "Syntax Error", "Expected Expression", "");
+                return new BinOpNode(token, "", "");
+            }
+
             dynamic left = ParseTerm();
             Token operation = CurrentToken;
             
@@ -35,15 +61,16 @@ namespace Lexical_analizer.src
             {
                 GetNextToken();
                 dynamic right = ParseTerm();
-                left = new BinOpNode(operation, left, right);
-                operation = CurrentToken;
-                
-            }
 
+                left = new BinOpNode(operation, left, right);
+
+                operation = CurrentToken;
+            }
+            
             if (Convert.ToString(left.GetType()).Contains("BinOpNode")) return left;
             else
             {
-                Er = new Token(operation.string_num, operation.column_num, "Syntax error", "", "");
+                OutputER(operation);
                 return new BinOpNode(operation,"","");
             }
         }
@@ -58,6 +85,7 @@ namespace Lexical_analizer.src
                 GetNextToken();
 
                 dynamic right = ParseFactor();
+
                 left = new BinOpNode(operation, left, right);
                 operation = CurrentToken;
             }
@@ -70,7 +98,7 @@ namespace Lexical_analizer.src
             Token token = CurrentToken;
             GetNextToken();
 
-            if ((token.type == "identifier") || (token.type.Contains("integer")) || (token.type.Contains("real"))) return new Node(token);
+            if (Enum.TryParse(typeof(Type_lex), token.type, out object result)) return new StandartNode(token);
             else if (Convert.ToString(token.value) == "(")
             {
                 dynamic left = ParseExpression();
@@ -78,12 +106,12 @@ namespace Lexical_analizer.src
 
                 GetNextToken();
 
-                if (Convert.ToString(token.value) != ")") Er = new Token(token.string_num, token.column_num + token.source.Length, "Expected \")\"", "", "");
+                if (Convert.ToString(token.value) != ")") Er = new Token(token.string_num, token.column_num + token.source.Length, "Syntax Error", "Expected \")\"", "");
                 return left;
             }
             else
             {
-                Er = new Token(token.string_num, token.column_num, "Syntax error", "", "");
+                OutputER(token);
                 return 0;
             }
         }

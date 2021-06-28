@@ -2,10 +2,10 @@
 
 namespace Lexical_analizer.src
 {
-    class Node
+    class StandartNode
     {
         private readonly Token token;
-        public Node(Token token) => this.token = token;
+        public StandartNode(Token token) => this.token = token;
         public string GetSource()
         {
             return token.source;
@@ -30,7 +30,7 @@ namespace Lexical_analizer.src
         {
             string tree = "";
 
-            if (Er != null) return tree += Er.string_num + "\t" + Er.column_num + "\t" + Er.type;
+            if (Er != null) return tree += Er.string_num + "\t" + Er.column_num + "\t" + Er.type + "\t" + Er.source;
 
             tree += Operation.value + "\n";
             for (int i = 0; i < (priority + 1); i++) tree += "\t";

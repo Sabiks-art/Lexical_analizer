@@ -5,11 +5,11 @@ using System.IO;
 namespace UnitTestProject2
 {
     [TestClass]
-    public class Lexer_tests
+    public class Lexer_test
     {
         private void Abc(string test_name)
         {
-            Lexer Lexer1 = new Lexer();
+            Lexical_analizer.src.Lexer Lexer1 = new Lexical_analizer.src.Lexer();
 
             Lexer1.Analysis(@"C:\Users\Danil\source\repos\Lexical_analizer\UnitTestProject2\Lexer_Tests\" + test_name + ".txt");
             string result;
@@ -267,17 +267,19 @@ namespace UnitTestProject2
     {
         private void Abc(string test_name)
         {
-            Lexer Lexer1 = new Lexer();
+            Lexical_analizer.src.Lexer Lexer1 = new Lexical_analizer.src.Lexer();
 
             Lexer1.Analysis(@"C:\Users\Danil\source\repos\Lexical_analizer\UnitTestProject2\Parser_Tests\" + test_name + ".txt");
-            string result;
-            string expectation;
+            string result = "";
+            string expectation = "";
             Parser pars = new Parser(Lexer1.Lexemes);
+            StreamWriter sw = new StreamWriter(@"C:\Users\Danil\source\repos\Lexical_analizer\UnitTestProject2\Parser_Tests_expectation\" + test_name + ".txt",false,System.Text.Encoding.Unicode);
+            //StreamReader sr = new StreamReader(@"C:\Users\Danil\source\repos\Lexical_analizer\UnitTestProject2\Parser_Tests_expectation\" + test_name + ".txt");
 
-            StreamReader sr = new StreamReader(@"C:\Users\Danil\source\repos\Lexical_analizer\UnitTestProject2\Parser_Tests_expectation\" + test_name + ".txt");
-
-            result = pars.GetTree();
-            expectation = sr.ReadToEnd();
+            sw.Write(pars.GetTree());
+            //result = pars.GetTree();
+            //expectation = sr.ReadToEnd();
+            sw.Close();
 
             Assert.AreEqual(result, expectation);
         }
@@ -314,5 +316,11 @@ namespace UnitTestProject2
 
         [TestMethod]
         public void Error2() { Abc("error2"); }
+
+        [TestMethod]
+        public void Semicolon() { Abc("semicolon"); }
+
+        [TestMethod]
+        public void Nothing() { Abc("nothing"); }
     }
 }
