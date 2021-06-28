@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Lexical_analizer\Lexical_analizer.csproj" />
+    <ProjectReference Include="..\Lexical_analizer\Compiler.csproj" />
   </ItemGroup>
 
 </Project>

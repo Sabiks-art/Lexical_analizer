@@ -5,16 +5,16 @@ using System.IO;
 namespace UnitTestProject2
 {
     [TestClass]
-    public class UnitTest1
+    public class Lexer_tests
     {
         private void Abc(string test_name)
         {
             Lexer Lexer1 = new Lexer();
 
-            Lexer1.Analysis(@"C:\Users\Danil\source\repos\Lexical_analizer\UnitTestProject2\Tests\" + test_name + ".txt");
+            Lexer1.Analysis(@"C:\Users\Danil\source\repos\Lexical_analizer\UnitTestProject2\Lexer_Tests\" + test_name + ".txt");
             string result;
             string expectation;
-            StreamReader sr = new StreamReader(@"C:\Users\Danil\source\repos\Lexical_analizer\UnitTestProject2\Tests_expectation\" + test_name + ".txt");
+            StreamReader sr = new StreamReader(@"C:\Users\Danil\source\repos\Lexical_analizer\UnitTestProject2\Lexer_Tests_expectation\" + test_name + ".txt");
             for (int i = 0; i < Lexer1.Lexemes.Count; i++)
             {
                 result = Lexer1.Lexemes[i].string_num + "\t" + Lexer1.Lexemes[i].column_num + "\t" + Lexer1.Lexemes[i].type + "\t" + Lexer1.Lexemes[i].source + "\t" + Lexer1.Lexemes[i].value;
@@ -260,5 +260,59 @@ namespace UnitTestProject2
         [TestMethod]
         public void Unrecognized_char() { Abc("unrecognized_char"); }
 
+    }
+
+    [TestClass]
+    public class Parser_tests
+    {
+        private void Abc(string test_name)
+        {
+            Lexer Lexer1 = new Lexer();
+
+            Lexer1.Analysis(@"C:\Users\Danil\source\repos\Lexical_analizer\UnitTestProject2\Parser_Tests\" + test_name + ".txt");
+            string result;
+            string expectation;
+            Parser pars = new Parser(Lexer1.Lexemes);
+
+            StreamReader sr = new StreamReader(@"C:\Users\Danil\source\repos\Lexical_analizer\UnitTestProject2\Parser_Tests_expectation\" + test_name + ".txt");
+
+            result = pars.GetTree();
+            expectation = sr.ReadToEnd();
+
+            Assert.AreEqual(result, expectation);
+        }
+
+        [TestMethod]
+        public void Sum() { Abc("sum"); }
+
+        [TestMethod]
+        public void Sum_comp() { Abc("sum_comp"); }
+
+        [TestMethod]
+        public void Sum_parentheses() { Abc("sum_parentheses"); }
+
+        [TestMethod]
+        public void Sum_comp_parentheses() { Abc("sum_comp_parentheses"); }
+
+        [TestMethod]
+        public void Double_parentheses_sum() { Abc("double_parentheses_sum"); }
+
+        [TestMethod]
+        public void Double_parentheses_sum_comp_div() { Abc("double_parentheses_sum_comp_div"); }
+
+        [TestMethod]
+        public void Wrong_parentheses1() { Abc("wrong_parentheses1"); }
+
+        [TestMethod]
+        public void Wrong_parentheses2() { Abc("wrong_parentheses2"); }
+
+        [TestMethod]
+        public void Error1() { Abc("error1"); }
+
+        [TestMethod]
+        public void Diff() { Abc("diff"); }
+
+        [TestMethod]
+        public void Error2() { Abc("error2"); }
     }
 }

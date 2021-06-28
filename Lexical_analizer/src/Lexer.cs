@@ -154,7 +154,7 @@ namespace Lexical_analizer.src
         {
             AddBuf(sm[0]);
             GetNext();
-
+            
             if ((basis == 10) && ((sm[0] == '.') || (Char.ToLower(sm[0]) == 'e'))) state = States.FNUM;
             else if (!IsInsignChar(sm[0]) && !IsDelimiterOrOperator(sm[0]) && !sr.EndOfStream) state = st;
             else
@@ -366,14 +366,15 @@ namespace Lexical_analizer.src
                             if (srch) AddLex(Lexemes, NumOfString, NumOfColumn, nameof(Type_lex.key_word), buf, "KWName");
                             else AddLex(Lexemes, NumOfString, NumOfColumn, nameof(Type_lex.identifier), buf, "IDName");
 
-                            if (sr.EndOfStream) state = States.FIN;
+                            if (IsInsignChar(sm[0]) || IsDelimiterOrOperator(sm[0])) state = States.S;
+                            else if (sr.EndOfStream) state = States.FIN;
                             else state = States.S;
                         }
                         else state = States.ER;
                         break;
 
                     case States.NUM:
-                        if (sr.EndOfStream && Char.IsDigit(sm[0]))
+                        if ((sr.EndOfStream && Char.IsDigit(sm[0])) || (sr.EndOfStream && sm[0] == '\0'))
                         {
                             AddBuf(sm[0]);
                             AddLex(Lexemes, NumOfString, NumOfColumn, nameof(Type_lex.integer_literal_int), buf, Convert.ToInt32(buf));
@@ -559,7 +560,9 @@ namespace Lexical_analizer.src
                             if (IsOperator(buf)) AddLex(Lexemes, NumOfString, NumOfColumn, nameof(Type_lex.Operator), buf, buf);
                             else state = States.ER;
 
+                            
                             if (state == States.ER) break;
+                            else if (sm[0] != buf[^1]) state = States.S;
                             else if (sr.EndOfStream) state = States.FIN;
                             else state = States.S;
                         }
