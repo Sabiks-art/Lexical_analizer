@@ -273,13 +273,11 @@ namespace UnitTestProject2
             string result = "";
             string expectation = "";
             Parser pars = new Parser(Lexer1.Lexemes);
-            StreamWriter sw = new StreamWriter(@"C:\Users\Danil\source\repos\Lexical_analizer\UnitTestProject2\Parser_Tests_expectation\" + test_name + ".txt",false,System.Text.Encoding.Unicode);
-            //StreamReader sr = new StreamReader(@"C:\Users\Danil\source\repos\Lexical_analizer\UnitTestProject2\Parser_Tests_expectation\" + test_name + ".txt");
+           
+            StreamReader sr = new StreamReader(@"C:\Users\Danil\source\repos\Lexical_analizer\UnitTestProject2\Parser_Tests_expectation\" + test_name + ".txt");
 
-            sw.Write(pars.GetTree());
-            //result = pars.GetTree();
-            //expectation = sr.ReadToEnd();
-            sw.Close();
+            result = pars.GetTree();
+            expectation = sr.ReadToEnd();
 
             Assert.AreEqual(result, expectation);
         }

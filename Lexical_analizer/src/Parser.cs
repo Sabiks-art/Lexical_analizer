@@ -97,8 +97,7 @@ namespace Lexical_analizer.src
         {
             Token token = CurrentToken;
             GetNextToken();
-
-            if (Enum.TryParse(typeof(Type_lex), token.type, out object result)) return new StandartNode(token);
+            if (Enum.TryParse(typeof(Type_lex), token.type, out object _)) return new StandartNode(token);
             else if (Convert.ToString(token.value) == "(")
             {
                 dynamic left = ParseExpression();
